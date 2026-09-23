@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jose Viviescas — Representante Estudiantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --paper-tint: #eef4ff;
+    --ink: #101828;
+    --ink-soft: #4a5468;
+    --navy: #16305c;
+    --blue: #2f5fe0;
+    --blue-bright: #2b6bff;
+    --line: #c9d6ef;
+    --line-soft: #dfe8fa;
+    --accent-check: #2f5fe0;
+    --card-bg: #ffffff;
+    --buzon-bg: #16305c;
+    --shadow: none;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #0d1220;
+      --paper-tint: #131b30;
+      --ink: #eef2fb;
+      --ink-soft: #aab4cc;
+      --navy: #cfe0ff;
+      --blue: #7ea6ff;
+      --blue-bright: #89b0ff;
+      --line: #2a3757;
+      --line-soft: #202b47;
+      --card-bg: #121a2e;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0d1220;
+    --paper-tint: #131b30;
+    --ink: #eef2fb;
+    --ink-soft: #aab4cc;
+    --navy: #cfe0ff;
+    --blue: #7ea6ff;
+    --blue-bright: #89b0ff;
+    --line: #2a3757;
+    --line-soft: #202b47;
+    --card-bg: #121a2e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  .brand-mark {
+    width: 30px; height: 30px;
+    border: 2px solid var(--navy);
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .brand-mark svg { width: 16px; height: 16px; }
+
+  .nav-links {
+    display: flex;
+    gap: 26px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 76px 0 64px;
+    border-bottom: 1px solid var(--line-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 18px;
+  }
+  .kicker svg { width: 16px; height: 16px; }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 0.98;
+  }
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero-sub {
+    margin-top: 20px;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+  }
+
+  .hero-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--blue-bright);
+    color: #ffffff;
+  }
+  .btn-primary:hover { background: var(--navy); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* ballot card */
+  .ballot-card {
+    background: var(--paper-tint);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .ballot-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 16px;
+  }
+  .ballot-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .ballot-checkbox {
+    width: 30px; height: 30px;
+    border: 2px solid var(--blue-bright);
+    border-radius: 6px;
+    flex: none;
+    display: grid;
+    place-items: center;
+  }
+  .ballot-checkbox svg { width: 18px; height: 18px; }
+  .ballot-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .ballot-role {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-top: 4px;
+  }
+  .ballot-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .ballot-pillars li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    list-style: none;
+  }
+  .ballot-pillars li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-bright);
+    flex: none;
+    margin-top: 6px;
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  section { padding: 76px 0; }
+  .section-head {
+    max-width: 60ch;
+    margin-bottom: 44px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+    font-weight: 700;
+  }
+  .section-head p {
+    margin-top: 12px;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- PROPUESTAS ---------- */
+  .propuestas { background: var(--paper-tint); border-bottom: 1px solid var(--line-soft); border-top: 1px solid var(--line-soft); }
+  .prop-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .prop-item {
+    border-top: 1px solid var(--line);
+  }
+  .prop-header { padding: 24px 0; }
+  .prop-item:last-child { border-bottom: 1px solid var(--line); }
+  .prop-check {
+    width: 30px; height: 30px;
+    border: 2px solid var(--navy);
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    margin-top: 2px;
+  }
+  .prop-check svg { width: 17px; height: 17px; opacity: 0; transition: opacity .15s ease; }
+  .prop-item:hover .prop-check svg { opacity: 1; }
+  .prop-item:hover .prop-check { background: var(--blue-bright); border-color: var(--blue-bright); }
+  .prop-item:hover .prop-check svg path { stroke: #fff; }
+
+  .prop-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.18rem;
+  }
+  .prop-desc {
+    margin-top: 6px;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    max-width: 56ch;
+  }
+
+  .prop-header {
+    display: grid;
+    grid-template-columns: 44px 1fr 20px;
+    gap: 20px;
+    align-items: start;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .prop-arrow {
+    margin-top: 6px;
+    color: var(--ink-soft);
+  }
+  .prop-arrow svg {
+    width: 16px; height: 16px;
+    transition: transform .2s ease;
+  }
+  .prop-item.open .prop-arrow svg { transform: rotate(180deg); }
+
+  .prop-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .25s ease;
+  }
+  .prop-item.open .prop-detail { grid-template-rows: 1fr; }
+  .prop-detail-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .prop-detail-body {
+    padding-top: 4px;
+    padding-bottom: 22px;
+    padding-left: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  @media (max-width: 560px) {
+    .prop-detail-body { padding-left: 0; }
+  }
+  .prop-detail-block .lbl {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: none;
+    color: var(--blue-bright);
+    margin-bottom: 4px;
+  }
+  .prop-detail-block p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    max-width: 58ch;
+  }
+  /* ---------- VIDEOS ---------- */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .video-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+  .video-thumb {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--paper-tint), var(--card-bg));
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .video-thumb svg { width: 34px; height: 34px; }
+  .video-meta { padding: 14px 16px; }
+  .video-meta .t { font-weight: 600; font-size: 0.95rem; }
+  .video-meta .s { color: var(--ink-soft); font-size: 0.85rem; margin-top: 3px; }
+
+  a.video-card { text-decoration: none; color: inherit; display: block; transition: border-color .15s ease; }
+  a.video-card:hover { border-color: var(--blue-bright); }
+  .video-play {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--blue-bright);
+    display: grid;
+    place-items: center;
+  }
+  .video-play svg { width: 20px; height: 20px; }
+  a.video-card .video-meta .t { display: flex; align-items: center; gap: 8px; }
+  a.video-card .video-meta .t svg { width: 15px; height: 15px; flex: none; color: var(--ink-soft); }
+
+  .video-native {
+    aspect-ratio: 9/16;
+    max-height: 520px;
+    margin: 0 auto;
+    background: #000;
+    border-bottom: 1px solid var(--line);
+  }
+  .video-native video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ---------- BUZÓN ---------- */
+  .buzon {
+    background: var(--buzon-bg);
+    color: #fff;
+    border-radius: 20px;
+    margin: 0 auto 76px;
+    max-width: 1080px;
+    padding: 56px 28px;
+  }
+  .buzon-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .buzon-inner { grid-template-columns: 1fr; }
+  }
+  .buzon h2 { color: #fff; font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 700; }
+  .buzon p.lead { color: #c3d2f2; margin-top: 14px; max-width: 42ch; }
+  .buzon-note {
+    margin-top: 26px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.86rem;
+    color: #c3d2f2;
+  }
+  .buzon-note svg { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+
+  .form-field { margin-bottom: 16px; }
+  .form-field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #dbe6fb;
+  }
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: #93a6cc; }
+  .form-field textarea { resize: vertical; min-height: 110px; }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid #fff;
+    outline-offset: 1px;
+  }
+
+  .buzon-submit {
+    background: #fff;
+    color: var(--navy);
+    border: none;
+    padding: 13px 24px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .buzon-submit:hover { background: #dbe6fb; }
+
+  .buzon-status {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: #cfe0ff;
+    display: none;
+  }
+  .buzon-status.show { display: block; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line-soft);
+    padding: 32px 0 calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .footer-inner a { text-decoration: none; color: var(--ink-soft); }
+  .footer-inner a:hover { color: var(--blue); }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--blue-bright);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Jose Viviescas
+    </a>
+    <div class="nav-links">
+      <a href="#propuestas">Propuestas</a>
+      <a href="#videos">Videos</a>
+      <a href="#buzon">Buzón de sugerencias</a>
+    </div>
+    <a class="nav-cta" href="#buzon">Enviar sugerencia</a>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2"/></svg>
+        Candidatura a representante estudiantil
+      </div>
+      <h1><span>Jose</span><span>Viviescas</span></h1>
+      <p class="hero-sub">Más torneos entre cursos, una feria para los que emprenden, acompañamiento real para quienes se preparan para irse a Alemania y batallas de aura para integrar a todos los grados. Esta página reúne mis propuestas para que las revises con calma.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#propuestas">Ver propuestas</a>
+        <a class="btn btn-ghost" href="#buzon">Dejar una sugerencia</a>
+      </div>
+    </div>
+
+    <div class="ballot-card">
+      <div class="ballot-card-top">
+        <div>
+          <div class="ballot-name">Jose Viviescas</div>
+          <div class="ballot-role">Representante estudiantil</div>
+        </div>
+        <div class="ballot-checkbox">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="ballot-label">Lo que propongo</div>
+      <ul class="ballot-pillars">
+        <li>Más intercursos</li>
+        <li>Feria de emprendimiento</li>
+        <li>Grupos de apoyo para Alemania</li>
+        <li>Batallas de aura entre cursos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="propuestas" id="propuestas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Propuestas</h2>
+      <p>Cuatro ideas concretas para este año. Pasa el cursor o el dedo sobre cada una, y presiónala para ver el objetivo y cómo pienso cumplirla.</p>
+    </div>
+
+    <div class="prop-list">
+      <div class="prop-item">
+        <button class="prop-header" type="button" aria-expanded="false">
+          <div class="prop-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="prop-title">Más intercursos</div>
+            <div class="prop-desc">Más torneos deportivos entre salones, con calendario fijo desde principio de año y premios para todos los grados, no solo para los últimos.</div>
+          </div>
+          <div class="prop-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="prop-detail">
+          <div class="prop-detail-inner">
+            <div class="prop-detail-body">
+              <div class="prop-detail-block">
+                <div class="lbl">Objetivo</div>
+                <p>Fomentar la participación estudiantil y asegurar que todos tengan la oportunidad de mostrar su talento y competir contra otros cursos.</p>
+              </div>
+              <div class="prop-detail-block">
+                <div class="lbl">Cómo pienso cumplirlo</div>
+                <p>Varios candidatos a personería y representantes de otros grados comparten esta misma propuesta, así que bastará con una buena comunicación para llevarla a la Klasse 10. Además, voy a elegir el tema de cada intercurso por medio de una encuesta en cada salón.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-item">
+        <button class="prop-header" type="button" aria-expanded="false">
+          <div class="prop-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="prop-title">Feria de emprendimiento</div>
+            <div class="prop-desc">Un espacio fijo para mostrar y vender los proyectos y negocios que arman los estudiantes, con apoyo del colegio para organizarlo bien.</div>
+          </div>
+          <div class="prop-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="prop-detail">
+          <div class="prop-detail-inner">
+            <div class="prop-detail-body">
+              <div class="prop-detail-block">
+                <div class="lbl">Objetivo</div>
+                <p>Incentivar el emprendimiento, ayudando a los estudiantes a aprender a manejar su propio negocio.</p>
+              </div>
+              <div class="prop-detail-block">
+                <div class="lbl">Cómo pienso cumplirlo</div>
+                <p>La organización del evento sería muy similar a la del Flohmarkt: cada estudiante tendría su propio stand, revisado por el colegio. Lo único que faltaría por definir sería la fecha y el lugar, algo que con el apoyo del comité estudiantil se puede coordinar directamente con los directivos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-item">
+        <button class="prop-header" type="button" aria-expanded="false">
+          <div class="prop-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="prop-title">Grupos de apoyo para Alemania</div>
+            <div class="prop-desc">Grupos de apoyo y acompañamiento para quienes se están preparando para el intercambio en Alemania, con información clara y ayuda entre estudiantes y profesores.</div>
+          </div>
+          <div class="prop-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="prop-detail">
+          <div class="prop-detail-inner">
+            <div class="prop-detail-body">
+              <div class="prop-detail-block">
+                <div class="lbl">Objetivo</div>
+                <p>Explicarles a los estudiantes cómo es el proceso de intercambio y acompañarlos con cualquier pregunta o problema que tengan.</p>
+              </div>
+              <div class="prop-detail-block">
+                <div class="lbl">Cómo pienso cumplirlo</div>
+                <p>Lo primero sería hablar con los profesores que han estudiado y vivido en Alemania, quienes tienen más experiencia, y organizar una o varias reuniones en la dirección de grupo donde respondan preguntas y nos cuenten más sobre la cultura alemana. En esas mismas reuniones se invitaría a estudiantes de Klasse 11 o 12 que quieran compartir voluntariamente su experiencia y los problemas que tuvieron durante el intercambio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-item">
+        <button class="prop-header" type="button" aria-expanded="false">
+          <div class="prop-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="prop-title">Batallas de aura entre cursos</div>
+            <div class="prop-desc">Batallas de exhibición amistosas entre estudiantes o profesores, una forma más divertida de ganar reconocimiento, premios e integrarse entre grados.</div>
+          </div>
+          <div class="prop-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="prop-detail">
+          <div class="prop-detail-inner">
+            <div class="prop-detail-body">
+              <div class="prop-detail-block">
+                <div class="lbl">Objetivo</div>
+                <p>Fomentar la participación estudiantil y la integración entre grados y cursos.</p>
+              </div>
+              <div class="prop-detail-block">
+                <div class="lbl">Cómo pienso cumplirlo</div>
+                <p>Las batallas se realizarían en la media torta. Los participantes se convocarían por medio de una encuesta, se coordinaría la fecha con dirección y se avisaría con tiempo a los estudiantes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Videos</h2>
+      <p>Aquí va a quedar el video de campaña y algunos clips cortos por propuesta. Se están terminando de grabar.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="video-meta">
+          <div class="t">Video de campaña</div>
+          <div class="s">Próximamente</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-native">
+          <video controls playsinline preload="metadata" src="batalla-aura.mp4"></video>
+        </div>
+        <div class="video-meta">
+          <div class="t">Batalla de farmear aura</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buzon" style="padding-top:0;">
+  <div class="buzon">
+    <div class="buzon-inner">
+      <div>
+        <h2>Buzón de sugerencias</h2>
+        <p class="lead">¿Hay algo que crees que le falta al colegio? Escríbelo aquí. Cada mensaje llega directo a mi correo.</p>
+        <div class="buzon-note">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>Al enviar se abrirá tu aplicación de correo con el mensaje ya redactado, listo para confirmar el envío.</span>
+        </div>
+      </div>
+
+      <form id="buzon-form">
+        <div class="form-field">
+          <label for="nombre">Nombre (opcional)</label>
+          <input id="nombre" type="text" placeholder="Puedes dejarlo en blanco si prefieres">
+        </div>
+        <div class="form-field">
+          <label for="curso">Curso (opcional)</label>
+          <input id="curso" type="text" placeholder="Ej: 10°B">
+        </div>
+        <div class="form-field">
+          <label for="mensaje">Tu sugerencia</label>
+          <textarea id="mensaje" placeholder="Cuéntame qué propondrías tú..." required></textarea>
+        </div>
+        <button class="buzon-submit" type="submit">Enviar sugerencia</button>
+        <div class="buzon-status" id="buzon-status">Abriendo tu correo con el mensaje listo...</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Jose Viviescas — Candidato a representante estudiantil</span>
+    <a href="mailto:2572@colegioaleman.edu.co">2572@colegioaleman.edu.co</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.prop-header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var item = header.closest('.prop-item');
+      var open = item.classList.toggle('open');
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  var form = document.getElementById('buzon-form');
+  var status = document.getElementById('buzon-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = document.getElementById('nombre').value.trim();
+    var curso = document.getElementById('curso').value.trim();
+    var mensaje = document.getElementById('mensaje').value.trim();
+    if (!mensaje) return;
+
+    var subject = 'Sugerencia desde la página de Jose Viviescas';
+    var bodyLines = [];
+    if (nombre) bodyLines.push('Nombre: ' + nombre);
+    if (curso) bodyLines.push('Curso: ' + curso);
+    bodyLines.push('');
+    bodyLines.push(mensaje);
+
+    var mailto = 'mailto:2572@colegioaleman.edu.co'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+    window.location.href = mailto;
+    status.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
